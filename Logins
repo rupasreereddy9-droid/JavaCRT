@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+class Login {
+    private String username;
+    private String password;
+
+    public Login(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public boolean isValid() {
+        return username.length() >= 8 && password.length() >= 8;
+    }
+}
+
+public class Logins {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter username (min 8 characters): ");
+        String username = s.nextLine();
+
+        System.out.print("Enter password (min 8 characters): ");
+        String password = s.nextLine();
+
+        Login l = new Login(username, password);
+
+        if (l.isValid()) {
+            System.out.println("Login details are valid.");
+        } else {
+            System.out.println("Login details are invalid.");
+        }
+
+        s.close();
+    }
+}
