@@ -1,0 +1,43 @@
+class Bank {
+    double amount;
+
+    // Parameterized constructor
+    Bank(double amount) {
+        this.amount = amount;
+    }
+
+    // Withdraw method
+    void withdraw(double withdrawalAmount) {
+        if (withdrawalAmount <= amount) {
+            amount -= withdrawalAmount;
+            System.out.println("Withdrawal successful");
+        } else {
+            System.out.println("Insufficient balance");
+        }
+    }
+
+    // Deposit method
+    void deposit(double depositAmount) {
+        amount += depositAmount;
+        System.out.println("Deposit successful");
+    }
+
+    // Display balance
+    void displayBalance() {
+        System.out.println("Final Balance: " + amount);
+    }
+
+    public static void main(String[] args) {
+        // Initial amount
+        Bank account = new Bank(10000);
+
+        // Withdraw amount
+        account.withdraw(5000);
+
+        // Deposit amount
+        account.deposit(5000);
+
+        // Display final balance
+        account.displayBalance();
+    }
+}
