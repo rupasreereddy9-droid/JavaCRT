@@ -1,0 +1,46 @@
+package Day6crt;
+
+import java.util.*;
+
+class Car3{
+	private String carName;
+	private String colorOfCar;
+	
+	public Car3(String carName, String colorOfCar) {
+		super();
+		this.carName = carName;
+		this.colorOfCar = colorOfCar;
+	}
+	public String getCarName() {
+		return carName;
+	}
+	public String getColorOfCar() {
+		return colorOfCar;
+	}
+	@Override
+	public String toString() {
+		return "Car Name=" + carName + ", Color Of the Car=" + colorOfCar;
+	}
+	
+}
+
+public class ExampleForVectorCar {
+
+	public static void main(String[] args) {
+		Vector<Car3> v1=new Vector<Car3>();
+		Car3 c1=new Car3("BMW","White");
+		Car3 c2=new Car3("Audi","Black");
+		Car3 c3=new Car3("Benz","Red");
+		
+		v1.add(c1);
+		v1.add(c2);
+		v1.add(c3);
+		
+		System.out.println("List of the cars:");
+		for(Object hi:v1) {
+			System.out.println(hi);
+		}
+
+	}
+
+}
