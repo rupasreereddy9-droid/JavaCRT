@@ -1,0 +1,49 @@
+package Day7crt;
+
+import java.util.LinkedHashSet;
+
+class Student{
+	private String rolloNo;
+	private String name;
+	private String email;
+	
+	public Student (String rolloNo, String name, String email) {
+		super();
+		this.rolloNo = rolloNo;
+		this.name = name;
+		this.email = email;
+	}
+	public String getRolloNo() {
+		return rolloNo;
+	}
+	public String getName() {
+		return name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	@Override
+	public String toString() {
+		return "Student [rolloNo=" + rolloNo + ", name=" + name + ", email=" + email + "]";
+	}
+	
+}
+public class ExampleForLinkedHashSet2 {
+
+	public static void main(String[] args) {
+		Student s1 = new Student("A11", "Rupa","rupa@gmail.com");
+		Student s2 = new Student("A12", "dhanu","dhanu@gmail.com");
+		
+		LinkedHashSet lhs = new LinkedHashSet();
+		lhs.add(s1);
+		lhs.add(s2);
+		
+		for(Object i : lhs)
+		{
+			System.out.println(i);
+		}
+		
+       
+	}
+
+}
