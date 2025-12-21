@@ -1,0 +1,52 @@
+package Day7crt;
+/* Comparable is a pre-defined interface in java.lang package
+ * Comparable was introduced from jdk 1.2
+ * Comparable interface has a abstract method called as compareTo()
+ * Comparable is used to compare objects and sort them
+ * Default sorting
+ */
+
+import java.util.TreeSet;
+
+class Car implements Comparable<Car>
+{
+	int cost;
+	Car(int cost){
+		this.cost=cost;
+	}
+	@Override
+	public String toString() {
+		return "Car [cost=" + cost + "]";
+	}
+	
+	@Override
+	public int compareTo(Car C)
+	{
+		return this.cost-C.cost;
+		
+	}
+}
+
+public class ExampleForComparable {
+
+	public static void main(String[] args) {
+		
+		Car C1 = new Car(300);
+		Car C2 = new Car(100);
+		Car C3 = new Car(200);
+		
+		TreeSet<Car> ts = new TreeSet<Car>();
+		ts.add(C1);
+		ts.add(C2);
+		ts.add(C3);
+		
+		for(Car i : ts)
+		{
+			System.out.println(i);
+		}
+		
+		
+
+	}
+
+}
