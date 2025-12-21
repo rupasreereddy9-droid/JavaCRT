@@ -1,0 +1,62 @@
+package Day7crt;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Collections;
+
+class NameComparator implements Comparator<Student1>{
+	@Override
+	public int compare(Student1 s1,Student1 s2) {
+		return s1.getName().compareTo(s2.getName());	
+	}
+}
+
+class RollNumberComparator implements Comparator<Student1>{
+	@Override
+	public int compare(Student1 s1,Student1 s2) {
+		return s1.getRollNo().compareTo(s2.getRollNo());	
+	}
+}
+
+class Student1{
+	private String name;
+	private String rollNo;
+	
+	public Student1(String name, String rollNo) {
+		super();
+		this.name = name;
+		this.rollNo = rollNo;
+	}
+	public String getName() {
+		return name;
+	}
+	public String getRollNo() {
+		return rollNo;
+	}
+	@Override
+	public String toString() {
+		return "Name=" + name + ", RollNo=" + rollNo ;
+	}
+}
+public class ExampleForComparator {
+
+	public static void main(String[] args) {
+		Student1 s1=new Student1("Kamal Hasan","S123");
+		Student1 s2=new Student1("Rajini Kanth","S456");
+		Student1 s3=new Student1("Shruthi Hasan","S789");
+		
+		ArrayList al=new ArrayList();
+		al.add(s1);
+		al.add(s2);
+		al.add(s3);
+		
+		//Collections.sort(al,new RollNumberComparator());
+		Collections.sort(al,new NameComparator());
+		for(Object i: al) {
+			System.out.println(i);
+		}
+		
+
+	}
+
+}
