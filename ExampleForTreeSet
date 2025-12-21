@@ -1,0 +1,17 @@
+package Day7crt;
+
+import java.util.TreeSet;
+
+public class ExampleForTreeSet {
+
+	public static void main(String[] args) {
+		TreeSet ts = new TreeSet();
+		ts.add(50);
+		ts.add(70);
+		ts.add(35);
+		ts.add(10);
+		System.out.println(ts);
+
+	}
+
+}
