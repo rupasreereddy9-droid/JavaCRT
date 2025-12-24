@@ -1,0 +1,55 @@
+package project;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class ExampleForScrollableResultSet {
+
+	public static void main(String[] args) {
+		String jdbcurl="jdbc:mysql://localhost:3306/crt";
+		String username="root";
+		String password="Rupa@1927";
+		
+		try(
+			Connection c= DriverManager.getConnection(jdbcurl,username,password);
+			Statement s=c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY))
+		{
+			String retrieve ="SELECT StudentID,FirstName,LastName FROM STUDENT";
+			ResultSet result=s.executeQuery(retrieve);
+			
+			//Move the cursor to last row
+			result.last();
+			//retrieve data from the last row
+			String lastID=result.getString("StudentID");
+			String fname=result.getString("FirstName");
+			String lname=result.getString("LastName");
+			System.out.println("StudentID:"+lastID+",FirstName:"+fname+",LastName:"+lname);
+			
+			//Move the cursor to first row
+			result.first();
+			//retrieve data from the first row
+			String firstID=result.getString("StudentID");
+			fname=result.getString("FirstName");
+			lname=result.getString("LastName");
+			System.out.println("StudentID:"+firstID+",FirstName:"+fname+",LastName:"+lname);
+			
+			//Move the cursor to absolute row
+			result.absolute(3);
+			//retrieve data from the absolute row
+			String absoluteID=result.getString("StudentID");
+			fname=result.getString("FirstName");
+			lname=result.getString("LastName");
+			System.out.println("StudentID:"+absoluteID+",FirstName:"+fname+",LastName:"+lname);
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+}
+
