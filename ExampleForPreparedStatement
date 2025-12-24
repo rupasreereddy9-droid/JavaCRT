@@ -1,0 +1,54 @@
+package project;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+public class ExampleForPreparedStatement {
+
+    public static void main(String[] args) {
+
+        String jdbcurl = "jdbc:mysql://localhost:3306/crt";
+        String username = "root";
+        String password = "Rupa@1927";
+
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter the employee id: ");
+        int id = s.nextInt();
+        s.nextLine(); // consume newline
+
+        System.out.print("Enter the employee name: ");
+        String name = s.nextLine();
+
+        System.out.print("Enter the employee email: ");
+        String email = s.nextLine();
+
+        System.out.print("Enter the employee phone number: ");
+        String phoneNumber = s.nextLine();
+
+        String insert = "INSERT INTO employee(id, name, email, PhoneNumber) VALUES (?, ?, ?, ?)";
+
+        try (
+            Connection c = DriverManager.getConnection(jdbcurl, username, password);
+            PreparedStatement p = c.prepareStatement(insert)
+        ) {
+            p.setInt(1, id);
+            p.setString(2, name);
+            p.setString(3, email);
+            p.setString(4, phoneNumber);
+
+            int rows = p.executeUpdate();
+
+            if (rows > 0) {
+                System.out.println("Employee inserted successfully.");
+            } else {
+                System.out.println("Insertion failed.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
